@@ -38,7 +38,7 @@ class AppCubit extends Cubit<AppState> {
     emit(SaveSharePrefDataSuccess());
   }
 
-  String currentAddress = '';
+  String? currentAddress;
 
   Future<String> getLocation() async {
     bool serviceEnabled;
@@ -76,12 +76,12 @@ class AppCubit extends Cubit<AppState> {
     emit(GetLocationSuccess());
 
     debugPrint('***********+$currentAddress');
-    return currentAddress;
+    return currentAddress!;
   }
 
   WeatherModelApi? weatherModel;
 
-  getCurrentWeather({required String? cuntryName}) async {
+  getCurrentWeather({required var cuntryName}) async {
     emit(GetCurrentWeatherLoading());
 
     Response currentWeatherResponse =

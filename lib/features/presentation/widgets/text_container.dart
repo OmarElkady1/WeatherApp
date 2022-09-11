@@ -91,7 +91,7 @@ class InfoContainer extends StatelessWidget {
                       decoration: BoxDecoration(
                         border: Border.all(),
                         shape: BoxShape.circle,
-                        color: Colors.black.withOpacity(.04),
+                        color: Colors.black.withOpacity(.1),
                       ),
                     ),
                     const SizedBox(

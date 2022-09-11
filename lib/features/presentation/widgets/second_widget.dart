@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:weather/core/cubit/current_weather/my_cubit.dart';
 import 'package:weather/core/widgets/all_day_temp.dart';
 
@@ -64,46 +65,62 @@ class SecondWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      height: 10,
-                      width: 10,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200),
-                        color: Colors.black.withOpacity(.1),
+                    Shimmer.fromColors(
+                      highlightColor: Colors.black.withOpacity(1),
+                      baseColor: Colors.black.withOpacity(.2),
+                      child: Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200),
+                          color: Colors.black.withOpacity(.1),
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 15,
-                      width: 15,
-                      decoration: BoxDecoration(
-                        border: Border.all(),
-                        shape: BoxShape.circle,
-                        color: Colors.black.withOpacity(.04),
+                    Shimmer.fromColors(
+                      highlightColor: Colors.black.withOpacity(1),
+                      baseColor: Colors.black.withOpacity(.2),
+                      child: Container(
+                        height: 15,
+                        width: 15,
+                        decoration: BoxDecoration(
+                          border: Border.all(),
+                          shape: BoxShape.circle,
+                          color: Colors.black.withOpacity(.1),
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 15,
-                      width: 15,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200),
-                        color: Colors.black.withOpacity(.1),
+                    Shimmer.fromColors(
+                      highlightColor: Colors.black.withOpacity(1),
+                      baseColor: Colors.black.withOpacity(.2),
+                      child: Container(
+                        height: 15,
+                        width: 15,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200),
+                          color: Colors.black.withOpacity(.1),
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 10,
-                      width: 10,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200),
-                        color: Colors.black.withOpacity(.1),
+                    Shimmer.fromColors(
+                      highlightColor: Colors.black.withOpacity(1),
+                      baseColor: Colors.black.withOpacity(.2),
+                      child: Container(
+                        height: 10,
+                        width: 10,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(200),
+                          color: Colors.black.withOpacity(.1),
+                        ),
                       ),
                     ),
                   ],

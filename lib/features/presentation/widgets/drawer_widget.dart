@@ -149,7 +149,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                             width: 5,
                           ),
                           Text(
-                            cubit.currentAddress,
+                            cubit.currentAddress!,
                             style: const TextStyle(
                               color: Colors.white,
                             ),

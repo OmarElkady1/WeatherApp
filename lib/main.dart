@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   DioHelper();
+  AppCubit().getLocation();
 
   runApp(MyApp());
 }
@@ -22,8 +23,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => AppCubit()
               ..getCityName()
-              ..getLocation()
-              ..getCurrentWeather(cuntryName: 'zagazig 1')),
+              ..getCurrentWeather(cuntryName: "zagazig 1")),
         BlocProvider(
             create: (context) =>
                 AppBloc()..get10DaysWeather(cityName: 'zagazig 1')),
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeWeatherPage(),
+        home: const HomeWeatherPage(),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
 import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
 import 'package:weather/core/widgets/weather_10Days.dart';
@@ -59,67 +60,91 @@ class ThiredWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
                         children: [
-                          Container(
-                            height: 15,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 15,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 25,
                           ),
-                          Container(
-                            height: 10,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 10,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 15,
                           ),
-                          Container(
-                            height: 10,
-                            width: 10,
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                              shape: BoxShape.circle,
-                              color: Colors.black.withOpacity(.04),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 10,
+                              width: 10,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                shape: BoxShape.circle,
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 15,
                           ),
-                          Container(
-                            height: 5,
-                            width: 5,
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                              shape: BoxShape.circle,
-                              color: Colors.black.withOpacity(.04),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 5,
+                              width: 5,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                shape: BoxShape.circle,
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 5,
                           ),
-                          Container(
-                            height: 5,
-                            width: 5,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 5,
+                              width: 5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(width: 15),
-                          Container(
-                            height: 10,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 10,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                         ],
@@ -136,67 +161,91 @@ class ThiredWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: Row(
                         children: [
-                          Container(
-                            height: 15,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 15,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 25,
                           ),
-                          Container(
-                            height: 10,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 10,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 15,
                           ),
-                          Container(
-                            height: 10,
-                            width: 10,
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                              shape: BoxShape.circle,
-                              color: Colors.black.withOpacity(.04),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 10,
+                              width: 10,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                shape: BoxShape.circle,
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 15,
                           ),
-                          Container(
-                            height: 10,
-                            width: 10,
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                              shape: BoxShape.circle,
-                              color: Colors.black.withOpacity(.04),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 10,
+                              width: 10,
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                shape: BoxShape.circle,
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(
                             width: 5,
                           ),
-                          Container(
-                            height: 5,
-                            width: 5,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 5,
+                              width: 5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                           const SizedBox(width: 15),
-                          Container(
-                            height: 5,
-                            width: 5,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(200),
-                              color: Colors.black.withOpacity(.1),
+                          Shimmer.fromColors(
+                            highlightColor: Colors.black.withOpacity(1),
+                            baseColor: Colors.black.withOpacity(.2),
+                            child: Container(
+                              height: 5,
+                              width: 5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(200),
+                                color: Colors.black.withOpacity(.1),
+                              ),
                             ),
                           ),
                         ],
