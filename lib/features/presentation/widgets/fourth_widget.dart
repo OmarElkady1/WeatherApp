@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
+import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
 import 'package:weather/core/cubit/current_weather/my_cubit.dart';
 
 class FourthWidget extends StatelessWidget {
@@ -7,9 +9,9 @@ class FourthWidget extends StatelessWidget {
   Color color;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppState>(
+    return BlocBuilder<AppBloc, BlocAppState>(
       builder: (context, state) {
-        if (state is GetCurrentWeatherSuccess) {
+        if (state is Get5DaysWeatherSuccess) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 7),
             child: Container(
@@ -41,7 +43,7 @@ class FourthWidget extends StatelessWidget {
                           height: 15,
                         ),
                         Text(
-                          "${AppCubit.get(context).weatherModel!.forecast!.forecastday![0].astro!.sunset} ",
+                          "${AppBloc.get(context).weatherAfter10Days!.forecast!.forecastday![0].astro!.sunset} ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -75,7 +77,7 @@ class FourthWidget extends StatelessWidget {
                           height: 15,
                         ),
                         Text(
-                          "${AppCubit.get(context).weatherModel!.forecast!.forecastday![0].astro!.sunset} ",
+                          "${AppBloc.get(context).weatherAfter10Days!.forecast!.forecastday![0].astro!.sunset} ",
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 15,

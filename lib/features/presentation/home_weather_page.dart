@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
 import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
-import 'package:weather/core/cubit/current_weather/my_cubit.dart';
 import 'package:weather/features/presentation/widgets/drawer_widget.dart';
 import 'package:weather/features/presentation/widgets/fifth_widget.dart';
 import 'package:weather/features/presentation/widgets/fourth_widget.dart';
@@ -66,22 +65,16 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
     super.dispose();
   }
 
-  // bool get _isBottom {
-  //   final maxScroll = scrollController.position.maxScrollExtent;
-  //   final currentScroll = scrollController.offset;
-  //   return currentScroll >= (maxScroll * 0.9);
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         drawer: DrawerWidget(),
         backgroundColor: scafoldbackground,
-        body: BlocBuilder<AppCubit, AppState>(builder: (context, state) {
-          if (state is GetCurrentWeatherLoading) {
+        body: BlocBuilder<AppBloc, BlocAppState>(builder: (context, state) {
+          if (state is Get5DaysWeatherLoading) {
             return const MySklton();
-          } else if (state is GetCurrentWeatherSuccess) {
+          } else if (state is Get5DaysWeatherSuccess) {
             return Padding(
               padding: const EdgeInsets.all(15.0),
               child: NestedScrollView(
@@ -98,8 +91,8 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
                                         color: Colors.white,
                                         fontSize: 25,
                                       ),
-                                      (AppCubit.get(context)
-                                              .weatherModel!
+                                      (AppBloc.get(context)
+                                              .weatherAfter10Days!
                                               .location!
                                               .name)
                                           .toString()),
@@ -117,7 +110,7 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
                                 actions: [
                                   Image.network(
                                       fit: BoxFit.fill,
-                                      'https:${AppCubit.get(context).weatherModel!.current!.condition!.icon}'),
+                                      'https:${AppBloc.get(context).weatherAfter10Days!.current!.condition!.icon}'),
                                 ],
                                 title: Row(children: [
                                   Text(
@@ -125,7 +118,7 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
                                         color: Colors.white,
                                         fontSize: 25,
                                       ),
-                                      "${(AppCubit.get(context).weatherModel!.current!.tempC)!.round()}\u00b0"),
+                                      "${(AppBloc.get(context).weatherAfter10Days!.current!.tempC)!.round()}\u00b0"),
                                   Column(children: [
                                     Row(
                                       children: [
@@ -134,7 +127,7 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
                                               color: Colors.white,
                                               fontSize: 10,
                                             ),
-                                            '${(AppCubit.get(context).weatherModel!.forecast!.forecastday![0].day!.maxtempC!)}\u00b0'),
+                                            '${(AppBloc.get(context).weatherAfter10Days!.forecast!.forecastday![0].day!.maxtempC!)}\u00b0'),
                                         const Text(
                                           ' / ',
                                           style: TextStyle(
@@ -146,12 +139,12 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
                                               color: Colors.white,
                                               fontSize: 10,
                                             ),
-                                            '${(AppCubit.get(context).weatherModel!.forecast!.forecastday![0].day!.mintempC!)}\u00b0'),
+                                            '${(AppBloc.get(context).weatherAfter10Days!.forecast!.forecastday![0].day!.mintempC!)}\u00b0'),
                                       ],
                                     ),
                                     Text(
-                                      (AppCubit.get(context)
-                                          .weatherModel!
+                                      (AppBloc.get(context)
+                                          .weatherAfter10Days!
                                           .location!
                                           .localtime!),
                                       style: const TextStyle(
@@ -194,14 +187,9 @@ class _HomeWeatherPageState extends State<HomeWeatherPage> {
                             const SizedBox(
                               height: 10,
                             ),
-                            BlocSelector<AppBloc, BlocAppState, dynamic>(
-                                selector: (state) {
-                              Get5DaysWeatherSuccess();
-                            }, builder: (context, state) {
-                              return ThiredWidget(
-                                color: background,
-                              );
-                            }),
+                            ThiredWidget(
+                              color: background,
+                            ),
                             const SizedBox(
                               height: 10,
                             ),

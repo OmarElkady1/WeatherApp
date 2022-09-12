@@ -29,7 +29,7 @@ class ThiredWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: ListView.builder(
                     itemBuilder: (context, index) =>
-                        WeatherAfter10Days(index: index),
+                        Weather10Days(index: index),
                     itemCount:
                         cubit.weatherAfter10Days!.forecast!.forecastday!.length,
                     scrollDirection: Axis.vertical,

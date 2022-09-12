@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
+import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
 import 'package:weather/core/cubit/current_weather/my_cubit.dart';
 import 'package:weather/core/widgets/all_day_temp.dart';
 
@@ -9,11 +11,11 @@ class SecondWidget extends StatelessWidget {
   Color color;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, AppState>(
+    return BlocConsumer<AppBloc, BlocAppState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is GetCurrentWeatherSuccess) {
-          var cubit = AppCubit.get(context);
+        if (state is Get5DaysWeatherSuccess) {
+          var cubit = AppBloc.get(context);
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 7),
             child: Container(
@@ -31,9 +33,10 @@ class SecondWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(10.0),
                 child: ListView.builder(
                   itemBuilder: (context, index) => AllDayTemp(
-                      weatherModel: cubit.weatherModel!, index: index),
-                  itemCount: cubit
-                      .weatherModel!.forecast!.forecastday![0].hour!.length,
+                      weatherAfter10Days: cubit.weatherAfter10Days!,
+                      index: index),
+                  itemCount: cubit.weatherAfter10Days!.forecast!.forecastday![0]
+                      .hour!.length,
                   scrollDirection: Axis.horizontal,
                 ),
               ),

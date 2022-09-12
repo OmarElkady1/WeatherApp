@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
-import 'package:weather/core/cubit/current_weather/my_cubit.dart';
+import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
 import 'package:weather/features/presentation/home_weather_page.dart';
 import 'package:weather/features/presentation/widgets/contact_us_widget.dart';
 
@@ -19,9 +19,9 @@ class _DrawerWidgetState extends State<DrawerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppState>(
+    return BlocBuilder<AppBloc, BlocAppState>(
       builder: (context, state) {
-        if (state is GetCurrentWeatherSuccess) {
+        if (state is Get5DaysWeatherSuccess) {
           void openLocationDialog() {
             showDialog(
                 context: context,
@@ -45,16 +45,16 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           TextButton(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
-                                  AppCubit.get(context).getCityName();
-                                  AppCubit.get(context).getCurrentWeather(
-                                      cuntryName: controller.text.toString());
+                                  AppBloc.get(context).getCityName();
+                                  AppBloc.get(context).get10DaysWeather(
+                                      cityName: controller.text.toString());
                                   AppBloc.get(context).get10DaysWeather(
                                       cityName: controller.text.toString());
 
                                   Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => HomeWeatherPage(),
                                   ));
-                                  AppCubit.get(context)
+                                  AppBloc.get(context)
                                       .saveCityName(controller.text);
                                 }
                               },
@@ -98,7 +98,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                     ));
           }
 
-          var cubit = AppCubit.get(context);
+          var cubit = AppBloc.get(context);
           return Drawer(
             backgroundColor: const Color(0xff313944),
             child: Padding(
@@ -149,7 +149,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                             width: 5,
                           ),
                           Text(
-                            cubit.currentAddress!,
+                            cubit.currentAddress,
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -157,12 +157,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           const Spacer(),
                           Image.network(
                               fit: BoxFit.fill,
-                              'https:${AppCubit.get(context).weatherModel!.forecast!.forecastday![0].hour![0].condition!.icon}'),
+                              'https:${AppBloc.get(context).weatherAfter10Days!.forecast!.forecastday![0].hour![0].condition!.icon}'),
                           const SizedBox(
                             width: 10,
                           ),
                           Text(
-                            '${cubit.weatherModel!.current!.tempC}\u00b0',
+                            '${cubit.weatherAfter10Days!.current!.tempC}\u00b0',
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -183,11 +183,11 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           ),
                           child: MaterialButton(
                               onPressed: () {
-                                AppCubit.get(context)
+                                AppBloc.get(context)
                                     .getLocation()
                                     .then((value) {
-                                  AppCubit.get(context)
-                                      .getCurrentWeather(cuntryName: value);
+                                  AppBloc.get(context)
+                                      .get10DaysWeather(cityName: value);
                                 });
                               },
                               child: const Text(
@@ -204,7 +204,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                         style: TextStyle(
                           color: Colors.white70,
                         ),
-                        '........................................................................',
+                        '..................................',
                         maxLines: 1,
                       ),
                       const SizedBox(
@@ -234,9 +234,8 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       ),
                       InkWell(
                         onTap: () {
-                          AppCubit.get(context).getCurrentWeather(
-                            cuntryName:
-                                AppCubit.get(context).cityName.toString(),
+                          AppBloc.get(context).get10DaysWeather(
+                            cityName: AppBloc.get(context).cityName.toString(),
                           );
 
                           Navigator.of(context).push(MaterialPageRoute(
@@ -262,12 +261,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                             const Spacer(),
                             Image.network(
                                 fit: BoxFit.fill,
-                                'https:${AppCubit.get(context).weatherModel!.forecast!.forecastday![0].hour![0].condition!.icon}'),
+                                'https:${AppBloc.get(context).weatherAfter10Days!.forecast!.forecastday![0].hour![0].condition!.icon}'),
                             const SizedBox(
                               width: 5,
                             ),
                             Text(
-                              '${cubit.weatherModel!.current!.tempC}\u00b0',
+                              '${cubit.weatherAfter10Days!.current!.tempC}\u00b0',
                               style: const TextStyle(
                                 color: Colors.white,
                               ),

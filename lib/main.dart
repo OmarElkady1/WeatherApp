@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
-import 'package:weather/core/cubit/current_weather/my_cubit.dart';
 import 'package:weather/core/network/my_dio.dart';
 import 'package:weather/features/presentation/home_weather_page.dart';
+import 'package:weather/features/presentation/widgets/fourth_widget.dart';
+import 'package:weather/features/presentation/widgets/second_widget.dart';
+import 'package:weather/features/presentation/widgets/thired_widget.dart';
+import 'package:weather/features/presentation/widgets/top_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   DioHelper();
-  AppCubit().getLocation();
 
   runApp(MyApp());
 }
@@ -21,12 +22,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => AppCubit()
+            create: (context) => AppBloc()
               ..getCityName()
-              ..getCurrentWeather(cuntryName: "zagazig 1")),
-        BlocProvider(
-            create: (context) =>
-                AppBloc()..get10DaysWeather(cityName: 'zagazig 1')),
+              ..get10DaysWeather(cityName: 'zagazig 1')),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

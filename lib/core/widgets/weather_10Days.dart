@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
 import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
 
-class WeatherAfter10Days extends StatelessWidget {
-  WeatherAfter10Days({Key? key, required this.index}) : super(key: key);
+class Weather10Days extends StatelessWidget {
+  Weather10Days({Key? key, required this.index}) : super(key: key);
   int index;
   @override
   Widget build(BuildContext context) {

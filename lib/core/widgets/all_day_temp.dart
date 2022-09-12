@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather/core/cubit/current_weather/my_cubit.dart';
-import 'package:weather/core/models/weather_model.dart';
+import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
+import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
+import 'package:weather/core/models/weather_10days_model.dart';
+import 'package:weather/core/widgets/weather_10Days.dart';
 
 class AllDayTemp extends StatelessWidget {
-  AllDayTemp({required this.weatherModel, required this.index, Key? key})
+  AllDayTemp({required this.weatherAfter10Days, required this.index, Key? key})
       : super(key: key);
-  WeatherModelApi weatherModel;
+  WeatherAfter10Days weatherAfter10Days;
   int index;
   @override
   Widget build(BuildContext context) {
     final String widgetDate =
-        "${weatherModel.forecast!.forecastday![0].hour![index].time}";
+        "${weatherAfter10Days.forecast!.forecastday![0].hour![index].time}";
     final parsedDate = DateTime.parse(widgetDate);
-    return BlocBuilder<AppCubit, AppState>(
+    return BlocBuilder<AppBloc, BlocAppState>(
       builder: (context, state) {
-        if (state is GetCurrentWeatherSuccess) {
+        if (state is Get5DaysWeatherSuccess) {
           return Padding(
             padding: const EdgeInsets.only(left: 0),
             child: Column(
@@ -28,19 +30,19 @@ class AllDayTemp extends StatelessWidget {
                 ),
                 Image.network(
                     fit: BoxFit.fill,
-                    'https:${weatherModel.forecast!.forecastday![0].hour![index].condition!.icon}'),
+                    'https:${weatherAfter10Days.forecast!.forecastday![0].hour![index].condition!.icon}'),
                 const SizedBox(
                   height: 0,
                 ),
                 Text(
-                  '${weatherModel.forecast!.forecastday![0].hour![index].tempC!}\u00b0',
+                  '${weatherAfter10Days.forecast!.forecastday![0].hour![index].tempC!}\u00b0',
                   style: const TextStyle(fontSize: 10, color: Colors.white),
                 ),
                 const SizedBox(
                   height: 45,
                 ),
                 Text(
-                  '${weatherModel.forecast!.forecastday![0].hour![index].humidity!}%',
+                  '${weatherAfter10Days.forecast!.forecastday![0].hour![index].humidity!}%',
                   style: const TextStyle(fontSize: 10, color: Colors.white),
                 ),
               ],

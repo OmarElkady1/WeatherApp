@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather/core/cubit/10days_weather/bloc_10_days.dart';
+import 'package:weather/core/cubit/10days_weather/state_10_days.dart';
 import 'package:weather/core/cubit/current_weather/my_cubit.dart';
 
 class InfoContainer extends StatelessWidget {
@@ -7,10 +9,10 @@ class InfoContainer extends StatelessWidget {
   Color color;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<AppCubit, AppState>(
+    return BlocConsumer<AppBloc, BlocAppState>(
       listener: (context, state) {},
       builder: (context, state) {
-        if (state is GetCurrentWeatherSuccess) {
+        if (state is Get5DaysWeatherSuccess) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 7),
             child: Container(
